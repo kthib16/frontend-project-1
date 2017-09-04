@@ -4,13 +4,13 @@
   "description" : "Starter project for the Bloc Frontend Web Development",
   "repository" : {
     "type" : "git",
-    "url" : "https://github.com/bloc/bloc-frontend-project-starter"
+    "url" : "https://github.com/kthib16/frontend-project-1.git"
   },
   "main" : "server.js",
   "scripts" : {
     "start" : "node server.js"
   },
-  "author" : "Bloc Inc",
+  "author" : "Kevin",
   "license" : "ISC",
   "dependencies": {
     "hapi" : "~16.4.0",
