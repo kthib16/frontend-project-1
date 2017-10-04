@@ -14,6 +14,11 @@
          */
          var currentBuzzObject = null;
 
+         SongPlayer.artist = null;
+
+
+
+
          /**
          * @function setSong
          * @desc Stops currently playing song and loads new audio file as currentBuzzObject
@@ -31,6 +36,7 @@
             });
 
             SongPlayer.currentSong = song;
+            SongPlayer.artist = currentAlbum.artist;
          };
 
          var playSong = function(song){
@@ -42,6 +48,11 @@
             currentBuzzObject.pause();
             song.playing = false;
          };
+
+         var stopSong = function() {
+              currentBuzzObject.stop();
+              SongPlayer.currentSong.playing = null;
+          };
 
         /**
         *@desc Returns the index of the current song
@@ -91,17 +102,33 @@
           *@desc Sets the current song to the previous song on the album
           *@param {Object} song
           */
-          SongPlayer.previous = function(){
+          SongPlayer.previous = function(song){
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex--;
             if(currentSongIndex < 0){
-                currentBuzzObject.stop();
-                SongPlayer.currentSong.playing = null;
+                stopSong();
             }
             else {
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
                 playSong(song);
+            }
+          };
+          /**
+          *@function next
+          *@desc Sets the current song to the next song on the album
+          *@param {Object} song
+          */
+          SongPlayer.next = function() {
+            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+            currentSongIndex++;
+            if(currentSongIndex > currentAlbum.songs.length - 1){
+              stopSong();
+            }
+            else {
+              var song = currentAlbum.songs[currentSongIndex];
+              setSong(song);
+              playSong(song);
             }
           };
 
