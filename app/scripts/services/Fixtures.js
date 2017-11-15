@@ -1,5 +1,5 @@
 (function () {
-    function Fixtures () {
+    function Fixtures ($rootScope) {
       var Fixtures = {};
 
       var albumPicasso = {
@@ -31,17 +31,20 @@
           { title: 'Wrong phone number', duration: '2:15' }
         ]
       };
+      var albums = [albumPicasso, albumMarconi];
+      //$rootScope.currentAlbum = null;
 
-      Fixtures.getAlbum = function() {
-        return albumPicasso;
+      /*Fixtures.getAlbum = function() {
+        Fixtures.currentAlbum = $event.currentTarget;
+        return Fixtures.currentAlbum;
+      };*/
+
+      $rootScope.getAlbum = function(obj, $event){
+        $rootScope.currentAlbum = $event.currentTarget;
       };
 
-      Fixtures.getCollection = function(numberOfAlbums){
-        var albums = [];
-        for(var i = 0; i < numberOfAlbums; i++){
-          albums.push(angular.copy(albumPicasso));
-        }
-        return albums;
+      Fixtures.getCollection = function(){
+        return albums
       };
 
       return Fixtures;
@@ -49,5 +52,5 @@
 
     angular
         .module('blocJams')
-        .factory('Fixtures', Fixtures);
+        .factory('Fixtures', ['$rootScope', Fixtures]);
 })();
