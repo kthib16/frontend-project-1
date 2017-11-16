@@ -39,8 +39,9 @@
         return Fixtures.currentAlbum;
       };*/
 
-      $rootScope.getAlbum = function(obj, $event){
-        $rootScope.currentAlbum = $event.currentTarget;
+      $rootScope.getAlbum = function(album){
+        $rootScope.currentAlbum = album;
+        return $rootScope.currentAlbum;
       };
 
       Fixtures.getCollection = function(){
