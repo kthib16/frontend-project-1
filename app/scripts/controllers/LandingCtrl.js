@@ -1,6 +1,6 @@
 (function() {
     function LandingCtrl() {
-        this.heroTitle = "A jam for every block";
+        this.heroTitle = "A Jam for every block";
     }
 
     angular
