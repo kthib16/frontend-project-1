@@ -32,17 +32,15 @@
         ]
       };
       var albums = [albumPicasso, albumMarconi];
-      //$rootScope.currentAlbum = null;
 
-      /*Fixtures.getAlbum = function() {
-        Fixtures.currentAlbum = $event.currentTarget;
-        return Fixtures.currentAlbum;
-      };*/
-
-      $rootScope.getAlbum = function(album){
+      Fixtures.getAlbum = function(album){
         $rootScope.currentAlbum = album;
         return $rootScope.currentAlbum;
       };
+
+      /*Fixtures.getAlbum = function(){
+        return $rootScope.currentAlbum;
+      };*/
 
       Fixtures.getCollection = function(){
         return albums

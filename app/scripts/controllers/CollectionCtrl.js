@@ -1,7 +1,7 @@
 (function() {
     function CollectionCtrl(Fixtures) {
         this.albums = Fixtures.getCollection();
-        //this.getAlbum = Fixtures.getAlbum();
+        this.getAlbum = Fixtures.getAlbum();
    }
 
     angular

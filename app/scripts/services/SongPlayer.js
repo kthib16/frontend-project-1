@@ -6,8 +6,7 @@
         /**
         *@desc Gets album info from the Fixtures file
         */
-         //var currentAlbum = Fixtures.getAlbum();
-         var currentAlbum = $rootScope.getAlbum;
+         var currentAlbum = $rootScope.currentAlbum;
          /**
          * @desc Buzz object audio file
          * @type {Object}
