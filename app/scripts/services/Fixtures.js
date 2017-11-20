@@ -1,5 +1,5 @@
 (function () {
-    function Fixtures ($rootScope) {
+    function Fixtures ($rootScope, $document) {
       var Fixtures = {};
 
       var albumPicasso = {
@@ -33,9 +33,8 @@
       };
       var albums = [albumPicasso, albumMarconi];
 
-      Fixtures.getAlbum = function(album){
-        $rootScope.currentAlbum = album;
-        return $rootScope.currentAlbum;
+      Fixtures.getAlbum = function(){
+        return albumPicasso;
       };
 
       /*Fixtures.getAlbum = function(){
@@ -51,5 +50,5 @@
 
     angular
         .module('blocJams')
-        .factory('Fixtures', ['$rootScope', Fixtures]);
+        .factory('Fixtures', ['$rootScope', '$document', Fixtures]);
 })();
