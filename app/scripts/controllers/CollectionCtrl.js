@@ -1,7 +1,10 @@
 (function() {
     function CollectionCtrl(Fixtures) {
         this.albums = Fixtures.getCollection();
-        this.getAlbum = Fixtures.getAlbum();
+        this.getAlbum = function(albumTitle){
+          console.log(albumTitle);
+          Fixtures.getAlbum(albumTitle);
+        };
    }
 
     angular

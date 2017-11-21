@@ -33,8 +33,15 @@
       };
       var albums = [albumPicasso, albumMarconi];
 
-      Fixtures.getAlbum = function(){
-        return albumPicasso;
+      Fixtures.getAlbum = function(albumTitle){
+        console.log(albumTitle);
+        var album = '';
+        for(var i = 0; i < albums.length; i++){
+          if(albums[i].title === albumTitle){
+            album = albums[i];
+          }
+        }
+        return album;
       };
 
       /*Fixtures.getAlbum = function(){
