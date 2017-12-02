@@ -4,9 +4,9 @@
 
 
         /**
-        *@desc Gets album info from the Fixtures file
+        *@desc Gets album info from the $rootScope
         */
-         var currentAlbum = Fixtures.getAlbum;
+         var currentAlbum = $rootScope.album;
          /**
          * @desc Buzz object audio file
          * @type {Object}
@@ -41,7 +41,7 @@
             });
 
             SongPlayer.currentSong = song;
-            SongPlayer.artist = currentAlbum.artist;
+            SongPlayer.artist = $rootScope.album.artist;
          };
 
          var playSong = function(song){
@@ -63,7 +63,7 @@
         *@desc Returns the index of the current song
         */
          var getSongIndex = function(song){
-            return currentAlbum.songs.indexOf(song);
+            return $rootScope.album.songs.indexOf(song);
          };
 
 
@@ -124,7 +124,7 @@
                 stopSong();
             }
             else {
-                var song = currentAlbum.songs[currentSongIndex];
+                var song = $rootScope.album.songs[currentSongIndex];
                 setSong(song);
                 playSong(song);
             }
@@ -137,11 +137,11 @@
           SongPlayer.next = function() {
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex++;
-            if(currentSongIndex > currentAlbum.songs.length - 1){
+            if(currentSongIndex > $rootScope.album.songs.length - 1){
               stopSong();
             }
             else {
-              var song = currentAlbum.songs[currentSongIndex];
+              var song = $rootScope.album.songs[currentSongIndex];
               setSong(song);
               playSong(song);
             }
