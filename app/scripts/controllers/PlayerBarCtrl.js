@@ -2,7 +2,7 @@
     function PlayerBarCtrl($rootScope, Fixtures, Metric, SongPlayer){
         this.albumData = $rootScope.currentAlbum;
         this.songPlayer = SongPlayer;
-        this.registerSongPlay = songObj;
+        this.metric = Metric;
     }
 
     angular

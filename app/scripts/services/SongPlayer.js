@@ -1,5 +1,5 @@
 (function() {
-        function SongPlayer($rootScope, Fixtures) {
+        function SongPlayer($rootScope, Fixtures, Metric) {
          var SongPlayer = {};
 
 
@@ -27,6 +27,7 @@
             if (currentBuzzObject) {
                 currentBuzzObject.stop();
                 SongPlayer.currentSong.playing = null;
+                SongPlayer.currentSong.paused = null;
             }
 
             currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -42,6 +43,8 @@
 
             SongPlayer.currentSong = song;
             SongPlayer.artist = $rootScope.album.artist;
+            Metric.counter(song);
+            Metric.registerSongPlay(song);
          };
 
          var playSong = function(song){
@@ -52,11 +55,13 @@
          var pauseSong = function(song){
             currentBuzzObject.pause();
             song.playing = false;
+            song.paused = true;
          };
 
          var stopSong = function() {
               currentBuzzObject.stop();
               SongPlayer.currentSong.playing = null;
+              SongPlayer.currentSong.paused = null;
           };
 
         /**
@@ -117,17 +122,15 @@
           *@desc Sets the current song to the previous song on the album
           *@param {Object} song
           */
-          SongPlayer.previous = function(song){
+          SongPlayer.previous = function(){
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex--;
             if(currentSongIndex < 0){
-                stopSong();
+                currentSongIndex = $rootScope.album.songs.length - 1;
             }
-            else {
-                var song = $rootScope.album.songs[currentSongIndex];
-                setSong(song);
-                playSong(song);
-            }
+            var song = $rootScope.album.songs[currentSongIndex];
+            setSong(song);
+            playSong(song);
           };
           /**
           *@function next
@@ -138,13 +141,11 @@
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex++;
             if(currentSongIndex > $rootScope.album.songs.length - 1){
-              stopSong();
+              currentSongIndex = 0;
             }
-            else {
-              var song = $rootScope.album.songs[currentSongIndex];
-              setSong(song);
-              playSong(song);
-            }
+            var song = $rootScope.album.songs[currentSongIndex];
+            setSong(song);
+            playSong(song);
           };
 
           /**
@@ -174,5 +175,5 @@
 
       angular
           .module('blocJams')
-          .factory('SongPlayer', ['$rootScope', 'Fixtures', SongPlayer]);
+          .factory('SongPlayer', ['$rootScope', 'Fixtures', 'Metric', SongPlayer]);
 }) ();

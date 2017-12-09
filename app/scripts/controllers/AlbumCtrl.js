@@ -2,7 +2,7 @@
     function AlbumCtrl($rootScope, Metric, SongPlayer){
         this.albumData = $rootScope.album;
         this.songPlayer = SongPlayer;
-        this.registerSongPlay = songObj;
+        this.metric = Metric;
     }
 
     angular
