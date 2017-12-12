@@ -31,19 +31,19 @@
           { title: 'Wrong phone number', duration: 374.22, audioUrl: 'assets/music/the_telephone/05_number' }
         ]
       };
-      var albums = [albumPicasso, albumMarconi];
+      Fixtures.albums = [albumPicasso, albumMarconi];
 
       Fixtures.getAlbum = function(albumTitle){
         $rootScope.album = '';
-        for(var i = 0; i < albums.length; i++){
-          if(albums[i].title === albumTitle){
-            $rootScope.album = albums[i];
+        for(var i = 0; i < Fixtures.albums.length; i++){
+          if(Fixtures.albums[i].title === albumTitle){
+            $rootScope.album = Fixtures.albums[i];
           }
         }
       };
 
       Fixtures.getCollection = function(){
-        return albums
+        return Fixtures.albums
       };
 
       return Fixtures;

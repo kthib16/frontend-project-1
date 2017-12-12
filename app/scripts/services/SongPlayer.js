@@ -45,6 +45,7 @@
             SongPlayer.artist = $rootScope.album.artist;
             Metric.counter(song);
             Metric.registerSongPlay(song);
+            Metric.registerAlbumInfo(song);
          };
 
          var playSong = function(song){
