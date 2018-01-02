@@ -1,8 +1,24 @@
-.chart div {
-  font: 10px sans-serif;
-  background-color: steelblue;
-  text-align: right;
-  padding: 3px;
-  margin: 1px;
-  color: white;
-}
+.chart{
+    margin: 250px;
+  }
+
+.bar{
+    fill: rgba(220,220,220,0.5);
+  }
+
+.bar:hover{
+    fill: steelblue;
+  }
+
+	.axis {
+	  font: 20px sans-serif;
+    color: rgb(220, 220, 220);
+	}
+
+	.axis path,
+	.axis line {
+    border-width: thick;
+	  fill: none;
+	  stroke: rgb(220,220,220);
+	  shape-rendering: crispEdges;
+	}
